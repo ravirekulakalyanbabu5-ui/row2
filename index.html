@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Play Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #202124;
+}
+
+/* HEADER */
+.header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    padding: 0 35px;
+    border-bottom: 1px solid #eee;
+    gap: 35px;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 23px;
+    color: #5f6368;
+    white-space: nowrap;
+}
+
+.play-icon {
+    font-size: 28px;
+    color: #00a86b;
+}
+
+.logo span {
+    font-weight: bold;
+}
+
+/* HEADER RIGHT NAVIGATION */
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: auto;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #5f6368;
+    font-size: 14px;
+    padding: 27px 0;
+    white-space: nowrap;
+}
+
+.navigation a:hover {
+    color: #01875f;
+}
+
+.navigation .active {
+    color: #01875f;
+    border-bottom: 3px solid #01875f;
+}
+
+/* SEARCH */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f1f3f4;
+    border-radius: 25px;
+    padding: 11px 17px;
+    width: 210px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+}
+
+.search-icon {
+    font-size: 18px;
+    color: #5f6368;
+}
+
+.help {
+    font-size: 21px;
+    color: #5f6368;
+    text-decoration: none;
+}
+
+/* MAIN CONTENT */
+.main {
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px 45px;
+}
+
+/* PAGE HEADING */
+.heading {
+    margin-bottom: 25px;
+}
+
+.heading h1 {
+    font-size: 29px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: #70757a;
+    font-size: 14px;
+}
+
+/* FEATURED BANNER */
+.banner {
+    height: 300px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background:
+    linear-gradient(90deg, rgba(0,0,0,.85), transparent),
+    url("https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1500")
+    center/cover;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.banner-content {
+    padding: 40px;
+    max-width: 500px;
+    color: white;
+}
+
+.banner-content h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.banner-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.banner-content a {
+    background: white;
+    color: #202124;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 45px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.section-heading a {
+    text-decoration: none;
+    color: #01875f;
+    font-size: 14px;
+}
+
+/* APP GRID */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 25px;
+}
+
+.app-card {
+    min-width: 0;
+    padding: 10px;
+    border-radius: 12px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.app-card:hover {
+    background: #f5f7f7;
+    transform: translateY(-5px);
+}
+
+.app-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.app-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+.app-card p {
+    font-size: 12px;
+    color: #70757a;
+    margin-bottom: 7px;
+}
+
+.rating {
+    font-size: 12px;
+    color: #70757a;
+}
+
+/* GAME SECTION */
+.games {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 18px;
+}
+
+/* CATEGORY BUTTONS */
+.categories {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.categories a {
+    text-decoration: none;
+    color: #444;
+    border: 1px solid #dadce0;
+    padding: 9px 18px;
+    border-radius: 25px;
+    font-size: 13px;
+}
+
+.categories a:hover {
+    background: #e6f4ea;
+    border-color: #01875f;
+}
+
+/* BOOKS SECTION */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.book-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.book-card p {
+    color: #777;
+    font-size: 12px;
+}
+
+/* FOOTER */
+.footer {
+    padding: 35px 45px;
+    border-top: 1px solid #eee;
+    color: #70757a;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #70757a;
+    margin-right: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1000px) {
+    .header {
+        padding: 15px 20px;
+        height: auto;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navigation {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        margin-left: 0;
+    }
+
+    .navigation a {
+        padding: 12px 0;
+    }
+
+    .search-box {
+        margin-left: auto;
+    }
+
+    .app-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .main {
+        padding: 22px 16px;
+    }
+
+    .header {
+        padding: 15px;
+    }
+
+    .search-box {
+        width: 160px;
+    }
+
+    .navigation {
+        gap: 20px;
+    }
+
+    .banner {
+        height: 250px;
+        background-position: center;
+    }
+
+    .banner-content {
+        padding: 22px;
+    }
+
+    .banner-content h2 {
+        font-size: 26px;
+    }
+
+    .app-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .heading h1 {
+        font-size: 25px;
+    }
+
+    .footer {
+        padding: 25px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo">
+        <span class="play-icon">▶</span>
+        <span>Google Play</span>
+    </div>
+
+    <nav class="navigation">
+        <a href="#apps">Apps</a>
+        <a href="#games" class="active">Games</a>
+        <a href="#books">Books</a>
+        <a href="#children">Children</a>
+
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input type="text" placeholder="Search apps & games">
+        </div>
+
+        <a href="#help" class="help" title="Help">?</a>
+    </nav>
+
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+    <div class="heading">
+        <h1>Discover something new</h1>
+        <p>Find your next favourite app, game or book.</p>
+    </div>
+
+    <!-- FEATURED BANNER -->
+    <section class="banner">
+        <div class="banner-content">
+            <h2>Level Up Your Gaming Experience</h2>
+
+            <p>
+                Discover exciting games, explore new worlds
+                and enjoy endless entertainment.
+            </p>
+
+            <a href="#games">Explore Games</a>
+        </div>
+    </section>
+
+    <!-- TOP APPS -->
+    <section class="section" id="apps">
+
+        <div class="section-heading">
+            <h2>Recommended for you</h2>
+            <a href="#apps">See more →</a>
+        </div>
+
+        <div class="app-grid">
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=300" alt="Social media app">
+                <h3>Social Connect</h3>
+                <p>Social Media</p>
+                <div class="rating">★ 4.5</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300" alt="Productivity app">
+                <h3>Productivity Pro</h3>
+                <p>Productivity</p>
+                <div class="rating">★ 4.6</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9?w=300" alt="Mobile app">
+                <h3>Smart Mobile</h3>
+                <p>Tools</p>
+                <div class="rating">★ 4.3</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300" alt="Development app">
+                <h3>Code Studio</h3>
+                <p>Education</p>
+                <div class="rating">★ 4.7</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300" alt="Creative app">
+                <h3>Creative Art</h3>
+                <p>Art & Design</p>
+                <div class="rating">★ 4.4</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300" alt="Entertainment app">
+                <h3>Fun Zone</h3>
+                <p>Entertainment</p>
+                <div class="rating">★ 4.8</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="section games" id="games">
+
+        <div class="section-heading">
+            <h2>Top games for you</h2>
+            <a href="#games">See more →</a>
+        </div>
+
+        <div class="categories">
+            <a href="#games">For you</a>
+            <a href="#games">Top charts</a>
+            <a href="#games">Premium</a>
+            <a href="#games">Categories</a>
+        </div>
+
+        <div class="app-grid">
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300" alt="Action gaming">
+                <h3>Action Arena</h3>
+                <p>Action</p>
+                <div class="rating">★ 4.5</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300" alt="Adventure game">
+                <h3>Adventure Quest</h3>
+                <p>Adventure</p>
+                <div class="rating">★ 4.7</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=300" alt="Gaming setup">
+                <h3>Gaming World</h3>
+                <p>Arcade</p>
+                <div class="rating">★ 4.4</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300" alt="Retro game">
+                <h3>Retro Games</h3>
+                <p>Casual</p>
+                <div class="rating">★ 4.3</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300" alt="Gaming">
+                <h3>Racing Challenge</h3>
+                <p>Racing</p>
+                <div class="rating">★ 4.6</div>
+            </div>
+
+            <div class="app-card">
+                <img src="https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?w=300" alt="Gaming adventure">
+                <h3>Fantasy World</h3>
+                <p>Role Playing</p>
+                <div class="rating">★ 4.8</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BOOKS -->
+    <section class="section" id="books">
+
+        <div class="section-heading">
+            <h2>Explore popular books</h2>
+            <a href="#books">See more →</a>
+        </div>
+
+        <div class="book-grid">
+
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" alt="Book">
+                <h3>Creative Thinking</h3>
+                <p>Books & Reading</p>
+            </div>
+
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400" alt="Book">
+                <h3>Explore Knowledge</h3>
+                <p>Education</p>
+            </div>
+
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400" alt="Book">
+                <h3>New Adventures</h3>
+                <p>Fiction</p>
+            </div>
+
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400" alt="Book">
+                <h3>Learning Everyday</h3>
+                <p>Knowledge</p>
+            </div>
+
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400" alt="Book">
+                <h3>Reading Corner</h3>
+                <p>Literature</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CHILDREN -->
+    <section class="section" id="children">
+        <div class="section-heading">
+            <h2>Children & Family</h2>
+            <a href="#children">Explore →</a>
+        </div>
+
+        <div class="banner"
+        style="background:
+        linear-gradient(90deg,rgba(0,0,0,.8),transparent),
+        url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1500')
+        center/cover;">
+            <div class="banner-content">
+                <h2>Fun Learning for Everyone</h2>
+                <p>
+                    Discover creative activities, educational
+                    entertainment and family-friendly experiences.
+                </p>
+                <a href="#children">Explore Now</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" id="help">
+    <div>
+        <a href="#apps">Google Play</a>
+        <a href="#games">Games</a>
+        <a href="#books">Books</a>
+        <a href="#children">Children</a>
+        <a href="#help">Help</a>
+    </div>
+
+    <p>© 2026 Google Play Store Inspired Design</p>
+</footer>
+
+</body>
+</html>
